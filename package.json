@@ -1,8 +1,8 @@
 {
-  "name": "koha-plugin-opac-theme-galadriel",
+  "name": "koha-plugin-opac-theme-childrens",
   "version": "1.0.60",
   "previous_version": "1.0.59",
-  "description": "Koha Galadriel OPAC Theme Plugin",
+  "description": "Koha Childrens OPAC Theme Plugin",
   "main": "index.js",
   "dependencies": {
     "datetime": "0.0.3",
@@ -22,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bywatersolutions/koha-plugin-opac-theme-galadriel.git"
+    "url": "git+https://github.com/bywatersolutions/koha-plugin-opac-theme-childrens.git"
   },
   "author": "Kyle M Hall <kyle@bywatersolutions.com>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/bywatersolutions/koha-plugin-opac-theme-galadriel/issues"
+    "url": "https://github.com/bywatersolutions/koha-plugin-opac-theme-childrens/issues"
   },
-  "homepage": "https://github.com/bywatersolutions/koha-plugin-opac-theme-galadriel#readme"
+  "homepage": "https://github.com/bywatersolutions/koha-plugin-opac-theme-childrens#readme"
 }

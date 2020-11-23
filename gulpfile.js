@@ -10,7 +10,7 @@ const today = dt.format('Y-m-d');
 var package_json = JSON.parse(fs.readFileSync('./package.json'));
 var release_filename = package_json.name + '-v' + package_json.version + '.kpz';
 
-var pm_file = 'OpacThemeGaladriel.pm';
+var pm_file = 'OpacThemeChildrens.pm';
 var pm_file_path = 'Koha/Plugin/Com/ByWaterSolutions/';
 var pm_file_path_full = pm_file_path + pm_file;
 var pm_file_path_dist = 'dist/' + pm_file_path;

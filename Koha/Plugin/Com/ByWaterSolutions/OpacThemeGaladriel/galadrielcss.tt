@@ -636,7 +636,7 @@
 		padding-left: 20px;
 		margin-bottom: 5px;
 		padding-left: 5em;
-		background-image: url('https://raw.githubusercontent.com/bywatersolutions/web-assets/master/sites/galadriel/Overdrive2-300x197.jpg');
+		background-image: url('https://raw.githubusercontent.com/bywatersolutions/web-assets/master/sites/childrens/Overdrive2-300x197.jpg');
 		background-repeat: no-repeat;
 		background-position: left;
 		background-size: 75px;

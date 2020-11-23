@@ -1,4 +1,4 @@
-package Koha::Plugin::Com::ByWaterSolutions::OpacThemeGaladriel;
+package Koha::Plugin::Com::ByWaterSolutions::OpacThemeChildrens;
 
 no warnings 'redefine';
 
@@ -17,7 +17,7 @@ BEGIN {
 
     my $pluginsdir = C4::Context->config('pluginsdir');
     my @pluginsdir = ref($pluginsdir) eq 'ARRAY' ? @$pluginsdir : $pluginsdir;
-    my $plugin_libs = '/Koha/Plugin/Com/ByWaterSolutions/OpacThemeGaladriel/lib/perl5';
+    my $plugin_libs = '/Koha/Plugin/Com/ByWaterSolutions/OpacThemeChildrens/lib/perl5';
 
     foreach my $plugin_dir (@pluginsdir){
         my $local_libs = "$plugin_dir/$plugin_libs";
@@ -32,9 +32,9 @@ use JavaScript::Minifier qw(minify);
 our $VERSION = "{VERSION}";
 
 our $metadata = {
-    name            => 'Galadriel OPAC Theme plugin',
+    name            => 'Childrens OPAC Theme plugin',
     author          => 'Kyle M Hall',
-    description     => 'Install the Galadriel OPAC theme ( design by Michael Cabus )',
+    description     => 'Install the Childrens OPAC theme ( design by Michael Cabus )',
     date_authored   => '2018-01-29',
     date_updated    => '1900-01-01',
     minimum_version => '16.05',
@@ -66,7 +66,7 @@ sub configure {
     unless ( $cgi->param('save') ) {
         my $template = $self->get_template( { file => 'configure.tt' } );
 
-        my $query = q{SELECT * FROM plugin_data WHERE plugin_class = 'Koha::Plugin::Com::ByWaterSolutions::OpacThemeGaladriel'};
+        my $query = q{SELECT * FROM plugin_data WHERE plugin_class = 'Koha::Plugin::Com::ByWaterSolutions::OpacThemeChildrens'};
         my $sth = $dbh->prepare( $query );
         $sth->execute();
         my $data;
@@ -89,26 +89,26 @@ sub configure {
         my $data = { $cgi->Vars };
         delete $data->{ $_ } for qw( method save class );
 
-        $dbh->do(q{DELETE FROM plugin_data WHERE plugin_key LIKE "enable%" AND plugin_class = 'Koha::Plugin::Com::ByWaterSolutions::OpacThemeGaladriel'});
+        $dbh->do(q{DELETE FROM plugin_data WHERE plugin_key LIKE "enable%" AND plugin_class = 'Koha::Plugin::Com::ByWaterSolutions::OpacThemeChildrens'});
         $self->store_data($data);
 
         $self->update_opacheader($data);
         $self->update_opaccredits($data);
-        $self->update_galadriel_js($data);
-        $self->update_galadriel_css($data);
+        $self->update_childrens_js($data);
+        $self->update_childrens_css($data);
         $self->go_home();
     }
 }
 
 sub opac_js {
         my ( $self ) = @_;
-        my $js = $self->retrieve_data('galadriel_js');
+        my $js = $self->retrieve_data('childrens_js');
         return "<script>".$js."</script>" if $js;
 }
 
 sub opac_head {
         my ( $self ) = @_;
-        my $css = $self->retrieve_data('galadriel_css') // "";
+        my $css = $self->retrieve_data('childrens_css') // "";
         return "<style>".$css."</style>" if $css;
 }
 ## This is the 'install' method. Any database tables or other setup that should
@@ -133,18 +133,18 @@ sub update_opacheader {
     my ($self, $data) = @_;
 
     my $opacheader = C4::Context->preference('opacheader');
-    $opacheader =~ s/\n*<!-- JS and CSS for Koha Galadriel OPAC Theme Plugin.*End of JS and CSS for Koha Galadriel OPAC Theme Plugin -->//gs;
+    $opacheader =~ s/\n*<!-- JS and CSS for Koha Childrens OPAC Theme Plugin.*End of JS and CSS for Koha Childrens OPAC Theme Plugin -->//gs;
 
     my $template = $self->get_template( { file => 'opacheader.tt' } );
     $template->param(%$data);
 
     my $template_output = $template->output();
 
-    $template_output = qq|\n<!-- JS and CSS for Koha Galadriel OPAC Theme Plugin 
-   This JS was added automatically by installing the Koha Galadriel OPAC Theme Plugin
+    $template_output = qq|\n<!-- JS and CSS for Koha Childrens OPAC Theme Plugin 
+   This JS was added automatically by installing the Koha Childrens OPAC Theme Plugin
    Please do not modify -->|
       . $template_output
-      . q|<!-- End of JS and CSS for Koha Galadriel OPAC Theme Plugin -->|;
+      . q|<!-- End of JS and CSS for Koha Childrens OPAC Theme Plugin -->|;
 
     $opacheader .= $template_output;
     C4::Context->set_preference( 'opacheader', $opacheader );
@@ -154,46 +154,46 @@ sub update_opaccredits {
     my ($self, $data) = @_;
 
     my $opaccredits = C4::Context->preference('opaccredits');
-    $opaccredits =~ s/\n*<!-- JS and CSS for Koha Galadriel OPAC Theme Plugin.*End of JS and CSS for Koha Galadriel OPAC Theme Plugin -->//gs;
+    $opaccredits =~ s/\n*<!-- JS and CSS for Koha Childrens OPAC Theme Plugin.*End of JS and CSS for Koha Childrens OPAC Theme Plugin -->//gs;
 
     my $template = $self->get_template( { file => 'opaccredits.tt' } );
     $template->param(%$data);
 
     my $template_output = $template->output();
 
-    $template_output = qq|\n<!-- JS and CSS for Koha Galadriel OPAC Theme Plugin 
-   This JS was added automatically by installing the Koha Galadriel OPAC Theme Plugin
+    $template_output = qq|\n<!-- JS and CSS for Koha Childrens OPAC Theme Plugin 
+   This JS was added automatically by installing the Koha Childrens OPAC Theme Plugin
    Please do not modify -->|
       . $template_output
-      . q|<!-- End of JS and CSS for Koha Galadriel OPAC Theme Plugin -->|;
+      . q|<!-- End of JS and CSS for Koha Childrens OPAC Theme Plugin -->|;
 
     $opaccredits .= $template_output;
     C4::Context->set_preference( 'opaccredits', $opaccredits );
 }
 
-sub update_galadriel_js {
+sub update_childrens_js {
     my ($self, $data) = @_;
 
-    my $template = $self->get_template( { file => 'galadrieljs.tt' } );
+    my $template = $self->get_template( { file => 'childrensjs.tt' } );
     $template->param(%$data);
 
-    my $galadriel_js = $template->output();
+    my $childrens_js = $template->output();
 
-    $galadriel_js = minify( input => $galadriel_js );
-    $self->store_data({ galadriel_js => $galadriel_js });
+    $childrens_js = minify( input => $childrens_js );
+    $self->store_data({ childrens_js => $childrens_js });
 
 }
 
-sub update_galadriel_css {
+sub update_childrens_css {
     my ($self, $data) = @_;
 
-    my $template = $self->get_template( { file => 'galadrielcss.tt' } );
+    my $template = $self->get_template( { file => 'childrenscss.tt' } );
     $template->param(%$data);
 
-    my $galadriel_css = $template->output();
+    my $childrens_css = $template->output();
 
-    $galadriel_css = minify( input => $galadriel_css );
-    $self->store_data({ galadriel_css => $galadriel_css });
+    $childrens_css = minify( input => $childrens_css );
+    $self->store_data({ childrens_css => $childrens_css });
 
 }
 
