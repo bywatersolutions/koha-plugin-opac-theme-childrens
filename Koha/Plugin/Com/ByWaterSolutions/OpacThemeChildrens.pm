@@ -102,14 +102,24 @@ sub configure {
 
 sub opac_js {
         my ( $self ) = @_;
-        my $js = $self->retrieve_data('childrens_js');
-        return "<script>".$js."</script>" if $js;
+
+        my $re = $self->retrieve_data('url_regex');
+
+        if ( $ENV{HTTP_HOST} =~ m/$re/ ) {
+            my $js = $self->retrieve_data('childrens_js');
+            return "<script>".$js."</script>" if $js;
+        }
 }
 
 sub opac_head {
         my ( $self ) = @_;
-        my $css = $self->retrieve_data('childrens_css') // "";
-        return "<style>".$css."</style>" if $css;
+
+        my $re = $self->retrieve_data('url_regex');
+
+        if ( $ENV{HTTP_HOST} =~ m/$re/ ) {
+            my $css = $self->retrieve_data('childrens_css') // "";
+            return "<style>".$css."</style>" if $css;
+        }
 }
 ## This is the 'install' method. Any database tables or other setup that should
 ## be done when the plugin if first installed should be executed in this method.

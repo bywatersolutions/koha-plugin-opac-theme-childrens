@@ -88,6 +88,14 @@ $( function() {
 
               <div id="tabs-1">
             <fieldset>
+                <legend>URL Match</legend>
+
+                <label for="url_regex">URL Regular expression: </label>
+                <input name="url_regex" id="url_regex" type="text" size="160" value="[% url_regex %]" />
+                <span class
+            </fieldset>
+
+            <fieldset>
                 <legend>Logo</legend>
 
                 <input type="checkbox" name="enable_header_url" [% IF enable_header_url %]checked="checked"[% END %] />
