@@ -33,11 +33,11 @@ our $VERSION = "{VERSION}";
 
 our $metadata = {
     name            => 'Childrens OPAC Theme plugin',
-    author          => 'Kyle M Hall',
-    description     => 'Install the Childrens OPAC theme ( design by Michael Cabus )',
+    author          => 'Lucas Gass, ByWater Solutions',
+    description     => 'Install the Childrens OPAC theme',
     date_authored   => '2018-01-29',
     date_updated    => '1900-01-01',
-    minimum_version => '16.05',
+    minimum_version => '20.05',
     maximum_version => undef,
     version         => $VERSION,
 };
