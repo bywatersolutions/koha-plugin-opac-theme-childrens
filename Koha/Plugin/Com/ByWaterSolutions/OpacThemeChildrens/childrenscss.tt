@@ -1,1 +1,302 @@
-/* START Global styles */
+#masthead_search {
+    display: none;
+}
+
+.mastheadsearch {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    padding: .8em;
+    margin: .5em 0;
+    background: #ffffff !important;
+}
+
+.mastheadsearch label {
+    font-size: 22px;
+    font-weight: 300;
+    font-family: 'Noto Sans', sans-serif !important;
+    color: #B73A2C;
+}
+
+#translControl1 {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 22px;
+    margin-left: 20px;
+    height: 60px;
+}
+
+#searchsubmit {
+  background: #ff8c00; 
+  color: #fff;
+  width: 205px;
+  height: 70px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 34px;
+  margin-left: 1em;
+}
+
+#moresearches {
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+/*search results */
+.bibliocol {
+    height: 400px;
+    min-width: 26vw;
+    text-align: center !important;
+}
+
+.table tbody {
+    display: grid !important;
+    grid-template-columns: 28vw 28vw 28vw;
+    grid-gap: 1em;
+    padding: .5em !important;
+}
+.table.table-striped {
+    background-color: #00CCFF;
+}
+
+#tab_descriptions {
+    display: none;
+}
+
+.coverimages {
+    float: none;
+	text-align: center;
+}
+
+.pagination-small ul > li > a, .pagination-small ul > li > span {
+    font-size: 1.275em;
+}
+
+.pagination li.active a {
+    color: #ee6e73 !important;
+}
+
+.pagination li a {
+    color: #444;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 30px;
+    padding: 12px !important;
+    font-family: 'Architects Daughter', cursive;
+
+}
+
+.results_summary.isbn {
+    display: none;
+}
+
+.results_summary.type {
+    display: none;
+}
+
+.author {
+font-family: 'Architects Daughter', cursive;
+
+}
+
+.title_resp_stmt {
+    display: none;
+}
+
+#facetcontainer {
+    display: none;
+}
+
+.results_audience {
+    display: none;
+}
+
+.results_contents_literary {
+    display: none;
+}
+
+.results_summary.publisher {
+    display: none;
+}
+
+.actions {
+    display: none;
+}
+
+.results_summary.edition {
+    display: none;
+}
+
+.select.selectcol {
+    display: none;
+}
+
+.loginModal-trigger {
+    display: none;
+}
+
+.results_material_type {
+    display: none;
+}
+
+.rsssearchicon {
+    display: none !important;
+}
+
+#sort_by {
+	display: none;
+}
+
+.results_format {
+    display: none;
+}
+
+.available {
+    font-family: "adobe-garamond-pro";
+    font-size: 19px;
+    color: #131418;
+}
+
+.separator {
+    display: none;
+}
+
+.results_summary .label {
+    color: #000000;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 25px;
+}
+
+.results_summary.tags {
+    display: none;
+}
+
+#login4tags {
+    display: none;
+}
+
+.searchresults p {
+    margin: 0;
+    padding: 0 0 .6em;
+    display: none;
+}
+
+.bibliocol {
+	box-shadow: 0px 0px 5px 1px #ccc;
+}
+
+.coverimages {
+    display: block;
+}
+
+.results_summary.other_title {
+    display: none;
+}
+
+a.title {
+    color: #c46055;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 1.3em;
+    opacity: .8;
+    line-height:1.4;
+    margin-bottom:20px;
+}
+
+#numresults {
+    font-family: 'Architects Daughter', cursive;
+    font-size: 19px;
+}
+
+.no-image {
+    display: none;
+}
+
+.suggestionlabel {
+    display: none;
+}
+
+.highlight_controls {
+    display: none;
+}
+
+#didyoumean {
+    display: none;
+}
+
+#selections-toolbar {
+    display: none;
+}
+
+.returntosearch {
+    display: none;
+}
+
+#usershelves #listcontents tbody {
+    display: block;    
+}
+
+.navbar-inverse .navbar-inner {
+    display: none;
+}
+
+#moresearches li::after {
+    content: " | ";
+    display: none;
+}
+
+#moresearches ul {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#moresearches li a {
+    font-family: 'Noto Sans', sans-serif;
+    text-transform: uppercase;
+    color: #B73A2C;
+    font-size: 2.25em;
+}
+
+#moresearches {
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#results .popular_books {
+    background: transparent;
+    margin: 0 auto;
+    width: 788px;
+}
+
+#daily-quote {
+    display: none;
+}
+
+#login {
+    display: none;
+}
+
+/*active categories */
+
+#series {
+	display:none;
+}
+
+#popular {
+	display:none;
+}
+
+.language {
+	display: none;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 968px) {
+  .table tbody {   
+       grid-template-columns: 38vw 38vw;
+  }
+}

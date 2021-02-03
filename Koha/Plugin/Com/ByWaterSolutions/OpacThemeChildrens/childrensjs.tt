@@ -1,1 +1,25 @@
-console.log('TEST');
+$(document).ready(function () {
+	/* general js */  
+	$('#moresearches ul').replaceWith('<ul><li><a href="">Advanced Search</a></li></ul>');
+
+	$('.bibliocol').each( function() {
+		$(this).append( $(this).find('.coverimages') );
+	});
+
+	$('#translControl1').attr('placeholder' , 'search here...');
+
+	$('label[for="masthead_search"]').prepend('<img src="https://raw.githubusercontent.com/bywatersolutions/web-assets/master/childrens_plugin/searchTelescope.png" width="50" alt="Telescope search icon"/>');
+
+  /* results page js */ 
+  if ( $('#results').length ) {
+	$('.maincontent').addClass('span12').removeClass('span10');
+	$('#facetcontainer').parent().remove();
+
+	$('.bibliocol').each( function() {
+		var back = ["#9abe29","#ffcb47","#fc5640"];
+		var rand = back[Math.floor(Math.random() * back.length)];
+		$(this).css('border', `8px solid ${rand}`);
+	});
+  }
+});
+
