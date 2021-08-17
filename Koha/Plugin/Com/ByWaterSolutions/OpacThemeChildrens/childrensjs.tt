@@ -1,25 +1,46 @@
-$(document).ready(function () {
-	/* general js */  
-	$('#moresearches ul').replaceWith('<ul><li><a href="">Advanced Search</a></li></ul>');
-
-	$('.bibliocol').each( function() {
-		$(this).append( $(this).find('.coverimages') );
-	});
-
-	$('#translControl1').attr('placeholder' , 'search here...');
-
-	$('label[for="masthead_search"]').prepend('<img src="https://raw.githubusercontent.com/bywatersolutions/web-assets/master/childrens_plugin/searchTelescope.png" width="50" alt="Telescope search icon"/>');
-
-  /* results page js */ 
-  if ( $('#results').length ) {
-	$('.maincontent').addClass('span12').removeClass('span10');
-	$('#facetcontainer').parent().remove();
-
-	$('.bibliocol').each( function() {
-		var back = ["#9abe29","#ffcb47","#fc5640"];
-		var rand = back[Math.floor(Math.random() * back.length)];
-		$(this).css('border', `8px solid ${rand}`);
-	});
-  }
+$('<h1 id="kids_head"><span class="welcome">Welcome to the Public Library</span><br /> <span class="kids_library"><span>K</span><span>i</span><span>d</span><span>s</span><span> </span><span>C</span><span>a</span><span>t</span><span>a</span><span>l</span><span>o</span><span>g</span></span></h1>').insertBefore( $('#opac-main-search') );
+$('#userresults').parent().addClass('col-lg-12').removeClass('col-lg-10');
+$('#translControl1').attr('placeholder' , 'What are you looking for?')
+$('.availability .label').text('Where can I find it?');
+$('.series .label').text('Find more in this series: ');
+$('.series a').text('Here')
+$('.online_resources .label').text('Get it online: ');
+$('.online_resources a').text('Here');
+$('.available .AvailabilityLabel').text('Copies available at: ');
+$('.page-link[aria-label="Go to the previous page"]').replaceWith('<a class="page-link" href="/cgi-bin/koha/opac-search.pl?idx=kw&amp;q=ee&amp;offset=0&amp;sort_by=relevance_dsc&amp;count=20" aria-label="Go to the previous page"> <i class="fa fa-fw fa-angle-left" aria-hidden="true"></i>  Back</a>');
+$('.bibliocol').each( function() {
+	$(this).prepend( $(this).find('.materialtype') );  
+    $(this).find('.availability').append( $(this).find('.online_resources') ); 
+})
+ const listOfIcons = {
+    book: ['mt_icon_BK', 'fa-book'],
+    kit: ['mt_icon_MM', 'fa-balance-scale'],
+    computer: ['mt_icon_CS', 'fa-laptop'],
+    map: ['mt_icon_MP' , 'fa-map'],
+    visual: ['mt_icon_VM' , 'fa-film'],
+    picture: ['mt_icon_GR', 'fa-picture-o'],
+    pictures: ['format[src="/opac-tmpl/lib/famfamfam/pictures.png"]' , 'fa-picture-o'],
+    object: ['mt_icon_OB' , 'fa-cube'],
+    score: ['mt_icon_PR' , 'fa-music'],
+    sound: ['mt_icon_MU' , 'fa-volume-up'],
+    music: ['mt_icon_PR', 'fa-volume-up'],
+    continueresource: ['mt_icon_SE' , 'fa-newspaper-o'],
+    biography: ['natureofcontents[alt="biography"]', 'fa-user'],
+    cd: ['format[src="/opac-tmpl/lib/famfamfam/cd.png"]', 'fa-dot-circle-o'],
+    dvd: ['format[src="/opac-tmpl/lib/famfamfam/dvd.png"]' , 'fa-dot-circle'],
+    globe: ['format[src="/opac-tmpl/lib/famfamfam/world.png"]', 'fa-globe'],
+    chart: ['format[src="/opac-tmpl/lib/famfamfam/chart_curve.png"]', 'fa-line-chart'],
+    pencil: ['format[src="/opac-tmpl/lib/famfamfam/pencil.png"]', 'fa-pencil'],
+    note: ['format[src="/opac-tmpl/lib/famfamfam/note.png"]' , 'fa-sticky-note-o' ],
+    paint: ['format[src="/opac-tmpl/lib/famfamfam/paintbrush.png"]' , 'fa-paint-brush'],
+    magnify: ['format[src="/opac-tmpl/lib/famfamfam/magnifier.png"]' , 'fa-search '],
+}
+function makeIconsFA(className, faIcon) {
+    $(`.${className}`).each( function() {
+        $(this).replaceWith('<i class="materialtype fa '+ faIcon + ' ' +  className + ' aria-hidden="true"></i>&nbsp;')
+    } )
+}
+Object.keys(listOfIcons).forEach(function (item) {
+    let array = listOfIcons[item];
+    makeIconsFA(array[0], array[1])
 });
-
