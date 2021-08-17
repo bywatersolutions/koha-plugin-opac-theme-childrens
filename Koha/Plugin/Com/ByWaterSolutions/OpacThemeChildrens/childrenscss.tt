@@ -275,6 +275,8 @@ table tbody tr {
 
 #kids_browse .subject {
 	text-align: center;
+    font-family: 'Mouse Memoirs' !important;
+    text-shadow: 1px 1px 2px #000;
 }
 
 #kids_browse .subject a {
@@ -285,22 +287,29 @@ table tbody tr {
 #kids_browse .subject img {
 	width: 120px;
     background: #fff;
-    border: 4px solid #000;
+    border: 4px solid orange;
     border-radius: 50%;
     box-shadow: 0px 0px 10px 5px #dcdcdc;
     width: 120px;
 	height: 120px;
+    box-shadow: 0 0 0 8px green;
+    transition: border 2s ease-out;
+}
+
+#kids_browse .subject img:active,
+#kids_browse .subject img:hover {
+    box-shadow: 0 0 0 8px solid green;
+    border: none;
 }
 
 .browse_heading {
 	text-align: center;
-    background: #fff;
-    color: #f15a29;
+    font-family: 'Mouse Memoirs' !important;
+    color: #fff;
     font-size: 50px;
-    font-weight: bolder;
-    border-radius: 30px;
 	margin-bottom: 1em;
-    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+    border-bottom: 4px solid orange;
+    text-shadow: 1px 1px 2px #000
 }
 
 #opac-detail .main {
@@ -314,6 +323,7 @@ table tbody tr {
 .tags,
 .ddc,
 .loc,
+.oc,
 .uniform_titles,
 #tab_descriptions,
 #tab_comments {
@@ -332,6 +342,31 @@ table tbody tr {
 #export,
 #moresearches_menu {
     display: none !important;
+}
+
+/* details page holdings table */
+#catalogue_detail_biblio,
+#opac-detail #holdingst {
+    font-size: 140% !important;
+}
+
+a[href="#holdings"] {
+    font-family: 'Mouse Memoirs' !important;    
+    text-shadow: 1px 1px 2px #000;
+    color: orange !important; 
+    font-size: 30px;
+    padding-bottom: 0 !important;
+}
+
+#bibliodescriptions .ui-tabs-nav {
+    border-bottom: 10px solid purple;
+    border-radius: 0;
+    padding-bottom: 10px;
+}
+
+#tab_holdings,
+#holdings {
+    border: none;
 }
 
 @media (max-width: 768px) {

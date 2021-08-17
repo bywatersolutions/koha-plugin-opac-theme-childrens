@@ -1,6 +1,8 @@
+/* main page*/
 $('<h1 id="kids_head"><span class="welcome">Welcome to the Public Library</span><br /> <span class="kids_library"><span>K</span><span>i</span><span>d</span><span>s</span><span> </span><span>C</span><span>a</span><span>t</span><span>a</span><span>l</span><span>o</span><span>g</span></span></h1>').insertBefore( $('#opac-main-search') );
 $('#userresults').parent().addClass('col-lg-12').removeClass('col-lg-10');
 $('#translControl1').attr('placeholder' , 'What are you looking for?')
+/* results page*/
 $('.availability .label').text('Where can I find it?');
 $('.series .label').text('Find more in this series: ');
 $('.series a').text('Here')
@@ -44,3 +46,7 @@ Object.keys(listOfIcons).forEach(function (item) {
     let array = listOfIcons[item];
     makeIconsFA(array[0], array[1])
 });
+
+/* details page */
+$('a[href="#holdings"] > span').text('Where can I find this?');
+console.log('here');
