@@ -33,7 +33,7 @@ our $VERSION = "{VERSION}";
 
 our $metadata = {
     name            => 'Childrens OPAC Theme plugin',
-    author          => 'Lucas Gass, ByWater Solutions',
+    author          => 'Kyle M Hall, ByWater Solutions',
     description     => 'Install the Childrens OPAC theme',
     date_authored   => '2018-01-29',
     date_updated    => '1900-01-01',
@@ -104,8 +104,14 @@ sub opac_js {
         my ( $self ) = @_;
 
         my $re = $self->retrieve_data('url_regex');
+        my $re2 = $self->retrieve_data('url_regex2');
 
         if ( $ENV{HTTP_HOST} =~ m/$re/ ) {
+            my $js = $self->retrieve_data('childrens_js');
+            return "<script>".$js."</script>" if $js;
+        }
+
+        if ( $ENV{HTTP_HOST} =~ m/$re2/ ) {
             my $js = $self->retrieve_data('childrens_js');
             return "<script>".$js."</script>" if $js;
         }
@@ -115,8 +121,14 @@ sub opac_head {
         my ( $self ) = @_;
 
         my $re = $self->retrieve_data('url_regex');
+        my $re2 = $self->retrieve_data('url_regex2');
 
         if ( $ENV{HTTP_HOST} =~ m/$re/ ) {
+            my $css = $self->retrieve_data('childrens_css') // "";
+            return "<style>".$css."</style>" if $css;
+        }
+
+        if ( $ENV{HTTP_HOST} =~ m/$re2/ ) {
             my $css = $self->retrieve_data('childrens_css') // "";
             return "<style>".$css."</style>" if $css;
         }

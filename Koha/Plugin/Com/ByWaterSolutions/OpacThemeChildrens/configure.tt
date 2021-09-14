@@ -1,54 +1,10 @@
 [% INCLUDE 'doc-head-open.inc' %]
   <title>Koha: Childrens OPAC Theme Plugin: Configuration</title>
   [% INCLUDE 'doc-head-close.inc' %]
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.js" integrity="sha256-3wWiHra+MxkTwcZwUQkkowAjnu5uqAF+6hE676OitiE=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.css" integrity="sha256-0gNW6jKGMP+oFR22hK5tl1qsZf21rWKR5cqmkyaLyjI=" crossorigin="anonymous" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" integrity="sha256-xqxV4FDj5tslOz6MV13pdnXgf63lJwViadn//ciKmIs=" crossorigin="anonymous" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.js" integrity="sha256-Sp9iyAGCmNhQw7nNwUU3zKH/uO3DPzcJVxdKOkWOI6A=" crossorigin="anonymous"></script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-
-  <link rel="stylesheet" href="https://cdn.rawgit.com/saadqbal/HiGoogleFonts/master/css/fonts.css" crossorigin="anonymous" />
-  <script src="https://cdn.rawgit.com/saadqbal/HiGoogleFonts/master/js/fonts.js" crossorigin="anonymous"></script>
-
   <link rel="stylesheet" type="text/css" href="[% interface %]/[% theme %]/css/humanmsg.css" />
   <script src="[% interface %]/lib/jquery/plugins/humanmsg.js" type="text/javascript"></script>
-
-  <script type="text/javascript">
+  <script>
     $(document).ready(function() {
-$( function() {
-  $( "#tabs" ).tabs();
-} );
-      $('#font-preview').hide();
-
-      $('.color').spectrum({
-            preferredFormat: "hex",
-            showInput: true,
-            showInitial: true,
-            allowEmpty: true,
-            showAlpha: true,
-            showPalette: true,
-            showSelectionPalette: true,
-            clickoutFiresChange: true
-      });
-
-      $( "#select_font_family" ).higooglefonts({
-          selectedCallback:function(e){
-              console.log(e);
-              $('#font_family').val(e);
-              $('#font-preview').show();
-          },
-          loadedCallback:function(e){
-              console.log(e);
-              $("#font-preview").css("font-family", e);
-          }
-      });
-
-      [% IF font_family %]
-        $('.select2-selection__placeholder').text('[% font_family %]');
-      [% END %]
-
       $('#save_continue').on('click', function(e){
         e.preventDefault();
         $.post('', $('#configureForm').serialize(), function(){
@@ -78,9 +34,32 @@ $( function() {
 
                 <label for="url_regex">URL Regular expression: </label>
                 <input name="url_regex" id="url_regex" type="text" size="160" value="[% url_regex %]" />
-                <span class
+                <br />
+                <label for="limit_itype">Limit to the following item types: </label>
+                <input name="limit_itype" id="limit_itype" type="text" size="160" value="[% limit_itype %]" />
+                <br />
+                <label for="limit_ccode">Limit to the following collection codes: </label>
+                <input name="limit_ccode" id="limit_ccode" type="text" size="160" value="[% limit_ccode %]" />
+                <br />
+                <label for="limit_loc">Limit to the following shelving locations: </label>
+                <input name="limit_loc" id="limit_loc" type="text" size="160" value="[% limit_loc %]" />
             </fieldset>
 
+            <fieldset>
+                <legend>URL Match 2</legend>
+
+                <label for="url_regex2">URL Regular expression 2: </label>
+                <input name="url_regex2" id="url_regex2" type="text" size="160" value="[% url_regex2 %]" />
+                <br />
+                <label for="limit_itype2">Limit to the following item types: </label>
+                <input name="limit_itype2" id="limit_itype2" type="text" size="160" value="[% limit_itype2 %]" />
+                <br />
+                <label for="limit_ccode2">Limit to the following collection codes: </label>
+                <input name="limit_ccode2" id="limit_ccode2" type="text" size="160" value="[% limit_ccode2 %]" />
+                <br />
+                <label for="limit_loc2">Limit to the following shelving locations: </label>
+                <input name="limit_loc2" id="limit_loc2" type="text" size="160" value="[% limit_loc2 %]" />
+            </fieldset>
 
 
         <input type="hidden" name="save" value="1" />

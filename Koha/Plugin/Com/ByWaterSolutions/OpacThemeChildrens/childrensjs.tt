@@ -1,3 +1,23 @@
+function addLimits(item, type) {
+    if ( item ) {
+        let limit_to_split = item.split('|');
+        limit_to_split.forEach( function(array) {
+                $('#searchform').append('<input type="hidden" name="limit" value="mc-'+type+',phr:'+array+'"></input>');
+        })
+    }
+}
+if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
+    addLimits("[% limit_itype %]", "itype");
+    addLimits("[% limit_ccode %]", "ccode");
+    addLimits("[% limit_loc %]", "loc");
+}
+
+if ( window.location.href.indexOf("[% url_regex2 %]") > -1 ) {
+    addLimits("[% limit_itype2 %]", "itype");
+    addLimits("[% limit_ccode2 %]", "ccode");
+    addLimits("[% limit_loc2 %]", "loc");
+}
+
 /* main page*/
 $('<h1 id="kids_head"><span class="welcome">Welcome to the Public Library</span><br /> <span class="kids_library"><span>K</span><span>i</span><span>d</span><span>s</span><span> </span><span>C</span><span>a</span><span>t</span><span>a</span><span>l</span><span>o</span><span>g</span></span></h1>').insertBefore( $('#opac-main-search') );
 $('#userresults').parent().addClass('col-lg-12').removeClass('col-lg-10');
@@ -49,4 +69,3 @@ Object.keys(listOfIcons).forEach(function (item) {
 
 /* details page */
 $('a[href="#holdings"] > span').text('Where can I find this?');
-console.log('here');
