@@ -205,7 +205,8 @@ table tbody tr {
 }
 
 .page-link[aria-label="Go to the previous page"],
-.left_results a {
+.left_results a,
+.left_results span {
     background: #b32317 !important;
     color: #fff;
     font-size: 30px !important;
@@ -300,6 +301,7 @@ table tbody tr {
 	display: grid;
 	grid-template-columns: repeat(5, 150px);
     grid-row-gap: 1em;
+    justify-content: center;
 }
 
 #kids_browse .subject {
@@ -418,10 +420,14 @@ a[href="#holdings"] {
 .pagination_list li,
 .pagination_list li a {
     color: #fff;
+    display: inline-block;
+    width: 100%;
 }
 
 .pagination_list li {
     border-top: none;
+    font-size: 20px;
+    margin-top: 5px;
 }
 
 .pagination_list .highlight {
@@ -466,4 +472,7 @@ a[href="#holdings"] {
   table tbody {
   	  grid-template-columns: 96%;
   }	
+  #kids_browse {
+    grid-template-columns: repeat(3,150px);
+  }
 }
