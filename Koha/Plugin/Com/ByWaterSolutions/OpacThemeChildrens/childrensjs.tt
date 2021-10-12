@@ -85,3 +85,5 @@ if ( $('#opac-detail').length ) {
     $('a[href="#holdings"] > span').text('Where can I find this?');
     $('.pg_menu').insertAfter( $('#opac-main-search') );
 }
+
+[% custom_js%]

@@ -470,6 +470,8 @@ a[href="#holdings"] {
     background: #c1cd23;
 }
 
+[% custom_css %]
+
 @media (max-width: 768px) {
   table tbody {
   	  grid-template-columns: 96%;

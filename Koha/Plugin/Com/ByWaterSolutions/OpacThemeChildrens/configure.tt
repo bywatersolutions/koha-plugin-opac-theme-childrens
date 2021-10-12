@@ -5,6 +5,8 @@
   <script src="[% interface %]/lib/jquery/plugins/humanmsg.js" type="text/javascript"></script>
   <script>
     $(document).ready(function() {
+      $('#custom_js').val("[% custom_js%]");
+      $('#custom_css').val("[% custom_css %]");
       $('#save_continue').on('click', function(e){
         e.preventDefault();
         $.post('', $('#configureForm').serialize(), function(){
@@ -61,7 +63,15 @@
                 <input name="limit_loc2" id="limit_loc2" type="text" size="160" value="[% limit_loc2 %]" />
             </fieldset>
 
-
+            <fieldset>
+                <legend>Custom JS/CSS</legend>
+                <label for="custom_js">Custom JavaScript: </label>
+                <textarea name="custom_js" id="custom_js" type="text" value="[% custom_js %]" style="width:100%;" rows="20"></textarea>
+                <br />
+                <hr />
+                <label for="custom_css">Custom CSS: </label>
+                <textarea name="custom_css" id="custom_css" type="text" value="[% custom_css %]" style="width:100%" rows="20"></textarea>
+            </fieldset>
         <input type="hidden" name="save" value="1" />
 
         <button style="margin-bottom:3em;" type="submit" value="Save">Save & Exit</button>
