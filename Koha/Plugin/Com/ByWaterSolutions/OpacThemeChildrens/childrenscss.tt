@@ -5,7 +5,9 @@ body {
 }
 
 #opacheader,
-#OpacNavRight {
+#OpacNavRight,
+#opaccredits,
+#OpacMainUserBlock {
 	display: none;
 }
 
