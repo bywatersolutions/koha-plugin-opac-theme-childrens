@@ -470,7 +470,22 @@ a[href="#holdings"] {
     background: #c1cd23;
 }
 
-[% custom_css %]
+#opac-detail .l_Results {
+    font-size: 28px;
+    text-align: center;
+    background: darkblue;
+    color: white;
+}
+
+#results .noresults {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+[% IF custom_css %]
+    [% custom_css %]
+[% END %]
 
 @media (max-width: 768px) {
   table tbody {

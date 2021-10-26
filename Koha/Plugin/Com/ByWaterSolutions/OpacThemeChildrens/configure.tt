@@ -5,8 +5,6 @@
   <script src="[% interface %]/lib/jquery/plugins/humanmsg.js" type="text/javascript"></script>
   <script>
     $(document).ready(function() {
-      $('#custom_js').val("[% custom_js%]");
-      $('#custom_css').val("[% custom_css %]");
       $('#save_continue').on('click', function(e){
         e.preventDefault();
         $.post('', $('#configureForm').serialize(), function(){
@@ -32,10 +30,13 @@
         <input type="hidden" name="class" value="[% CLASS %]"/>
         <input type="hidden" name="method" value="[% METHOD %]"/>
             <fieldset>
-                <legend>URL Match</legend>
+                <legend>Define Kids OPAC #1</legend>
 
-                <label for="url_regex">URL Regular expression: </label>
+                <label for="url_regex">Kids OPAC URL #1: </label>
                 <input name="url_regex" id="url_regex" type="text" size="160" value="[% url_regex %]" />
+                <br />
+                <label for="libraryname">Library name: </label>
+                <input name="libraryname" id="libraryname" type="text" size="160" value="[% libraryname %]" />
                 <br />
                 <label for="limit_itype">Limit to the following item types: </label>
                 <input name="limit_itype" id="limit_itype" type="text" size="160" value="[% limit_itype %]" />
@@ -48,10 +49,13 @@
             </fieldset>
 
             <fieldset>
-                <legend>URL Match 2</legend>
+                <legend>Define Kids OPAC #2</legend>
 
-                <label for="url_regex2">URL Regular expression 2: </label>
+                <label for="url_regex2">Kids OPAC URL #2: </label>
                 <input name="url_regex2" id="url_regex2" type="text" size="160" value="[% url_regex2 %]" />
+                <br />
+                <label for="libraryname2">Library name: </label>
+                <input name="libraryname2" id="libraryname2" type="text" size="160" value="[% libraryname2 %]" />
                 <br />
                 <label for="limit_itype2">Limit to the following item types: </label>
                 <input name="limit_itype2" id="limit_itype2" type="text" size="160" value="[% limit_itype2 %]" />
