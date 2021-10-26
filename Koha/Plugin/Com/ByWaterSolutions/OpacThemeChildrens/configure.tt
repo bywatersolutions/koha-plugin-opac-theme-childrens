@@ -1,3 +1,4 @@
+[% USE raw %]
 [% INCLUDE 'doc-head-open.inc' %]
   <title>Koha: Childrens OPAC Theme Plugin: Configuration</title>
   [% INCLUDE 'doc-head-close.inc' %]
@@ -13,7 +14,13 @@
       });
     });
   </script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.css">
+    <style>
+        .CodeMirror {
+            resize: vertical;
+            z-index: 0;
+        }
+    </style>
 </head>
 <body>
 [% INCLUDE 'header.inc' %]
@@ -81,5 +88,24 @@
         <button style="margin-bottom:3em;" type="submit" value="Save">Save & Exit</button>
         <button style="margin-bottom:3em;" id="save_continue">Save & continue</button>
     </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"></script>
+        <script>
+            var editor = CodeMirror.fromTextArea(document.getElementById('custom_js'), {
+                lineNumbers: true,
+                lineWrapping: true,
+                lint: true,
+                mode: "javascript",
+                gutters: ["CodeMirror-lint-markers"],
+                viewportMargin: Infinity,
+            });
+            var editor = CodeMirror.fromTextArea(document.getElementById('custom_css'), {
+                lineNumbers: true,
+                lineWrapping: true,
+                lint: true,
+                mode: "css",
+                gutters: ["CodeMirror-lint-markers"],
+                viewportMargin: Infinity,
+            });
+        </script>
 
 [% INCLUDE 'intranet-bottom.inc' %]
