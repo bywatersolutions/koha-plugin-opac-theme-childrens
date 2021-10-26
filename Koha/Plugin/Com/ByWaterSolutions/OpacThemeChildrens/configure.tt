@@ -66,11 +66,11 @@
             <fieldset>
                 <legend>Custom JS/CSS</legend>
                 <label for="custom_js">Custom JavaScript: </label>
-                <textarea name="custom_js" id="custom_js" type="text" value="[% custom_js %]" style="width:100%;" rows="20"></textarea>
+                <textarea name="custom_js" id="custom_js" style="width:100%;" rows="20">[% custom_js | html%]</textarea>
                 <br />
                 <hr />
                 <label for="custom_css">Custom CSS: </label>
-                <textarea name="custom_css" id="custom_css" type="text" value="[% custom_css %]" style="width:100%" rows="20"></textarea>
+                <textarea name="custom_css" id="custom_css" style="width:100%" rows="20">[% custom_css | html%]</textarea>
             </fieldset>
         <input type="hidden" name="save" value="1" />
 
