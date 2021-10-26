@@ -20,6 +20,27 @@
             resize: vertical;
             z-index: 0;
         }
+        .wrapper {
+            background-color: whitesmoke;
+            list-style-type: none;
+            padding: 0;
+            border-radius: 3px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: flex-end;
+            padding: .5em;
+        }
+        .form-row > label {
+            padding: .5em 1em .5em 0;
+            flex: 1;
+        }
+        .form-row > input {
+            flex: 2;
+        }
+        .form-row > input {
+            padding: .5em;
+        }
     </style>
 </head>
 <body>
@@ -38,40 +59,54 @@
         <input type="hidden" name="method" value="[% METHOD %]"/>
             <fieldset>
                 <legend>Define Kids OPAC #1</legend>
-
-                <label for="url_regex">Kids OPAC URL #1: </label>
-                <input name="url_regex" id="url_regex" type="text" size="160" value="[% url_regex %]" />
-                <br />
-                <label for="libraryname">Library name: </label>
-                <input name="libraryname" id="libraryname" type="text" size="160" value="[% libraryname %]" />
-                <br />
-                <label for="limit_itype">Limit to the following item types: </label>
-                <input name="limit_itype" id="limit_itype" type="text" size="160" value="[% limit_itype %]" />
-                <br />
-                <label for="limit_ccode">Limit to the following collection codes: </label>
-                <input name="limit_ccode" id="limit_ccode" type="text" size="160" value="[% limit_ccode %]" />
-                <br />
-                <label for="limit_loc">Limit to the following shelving locations: </label>
-                <input name="limit_loc" id="limit_loc" type="text" size="160" value="[% limit_loc %]" />
+                <ul class="wrapper">
+                    <li class="form-row">
+                        <label for="url_regex">Kids OPAC URL #1: </label>
+                        <input name="url_regex" id="url_regex" type="text" size="160" value="[% url_regex %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="libraryname">Library name: </label>
+                        <input name="libraryname" id="libraryname" type="text" size="160" value="[% libraryname %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="limit_itype">Limit to the following item types: </label>
+                        <input name="limit_itype" id="limit_itype" type="text" size="160" value="[% limit_itype %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="limit_ccode">Limit to the following collection codes: </label>
+                        <input name="limit_ccode" id="limit_ccode" type="text" size="160" value="[% limit_ccode %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="limit_loc">Limit to the following shelving locations: </label>
+                        <input name="limit_loc" id="limit_loc" type="text" size="160" value="[% limit_loc %]" />
+                    </li>
+                </ul>
             </fieldset>
 
             <fieldset>
                 <legend>Define Kids OPAC #2</legend>
-
-                <label for="url_regex2">Kids OPAC URL #2: </label>
-                <input name="url_regex2" id="url_regex2" type="text" size="160" value="[% url_regex2 %]" />
-                <br />
-                <label for="libraryname2">Library name: </label>
-                <input name="libraryname2" id="libraryname2" type="text" size="160" value="[% libraryname2 %]" />
-                <br />
-                <label for="limit_itype2">Limit to the following item types: </label>
-                <input name="limit_itype2" id="limit_itype2" type="text" size="160" value="[% limit_itype2 %]" />
-                <br />
-                <label for="limit_ccode2">Limit to the following collection codes: </label>
-                <input name="limit_ccode2" id="limit_ccode2" type="text" size="160" value="[% limit_ccode2 %]" />
-                <br />
-                <label for="limit_loc2">Limit to the following shelving locations: </label>
-                <input name="limit_loc2" id="limit_loc2" type="text" size="160" value="[% limit_loc2 %]" />
+                <ul class="wrapper">
+                    <li class="form-row">
+                        <label for="url_regex2">Kids OPAC URL #2: </label>
+                        <input name="url_regex2" id="url_regex2" type="text" size="160" value="[% url_regex2 %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="libraryname2">Library name: </label>
+                        <input name="libraryname2" id="libraryname2" type="text" size="160" value="[% libraryname2 %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="limit_itype2">Limit to the following item types: </label>
+                        <input name="limit_itype2" id="limit_itype2" type="text" size="160" value="[% limit_itype2 %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="limit_ccode2">Limit to the following collection codes: </label>
+                        <input name="limit_ccode2" id="limit_ccode2" type="text" size="160" value="[% limit_ccode2 %]" />
+                    </li>
+                    <li class="form-row">
+                        <label for="limit_loc2">Limit to the following shelving locations: </label>
+                        <input name="limit_loc2" id="limit_loc2" type="text" size="160" value="[% limit_loc2 %]" />
+                    </li>
+                </ul>
             </fieldset>
 
             <fieldset>
