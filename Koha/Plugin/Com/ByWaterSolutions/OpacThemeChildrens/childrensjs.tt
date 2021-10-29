@@ -77,6 +77,16 @@ if ( $('#opac-detail').length ) {
     $('.nav_results .l_Results').text('More items like this!')
 }
 
+/* holds page */
+if ( $('#opac-holds').length ) {
+    $('.branch label').text('I want to pick this up at:')
+}
+
+if ( window.location.href.indexOf("/cgi-bin/koha/opac-user.pl?#opac-user-holds") > -1 ) {
+    $('#opac-user-views').hide();
+    $('#userdetails').replaceWith('<h1>Your hold has been placed!</h1>');
+}
+
 if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
     addLimits("[% limit_itype %]", "itype");
     addLimits("[% limit_ccode %]", "ccode");
