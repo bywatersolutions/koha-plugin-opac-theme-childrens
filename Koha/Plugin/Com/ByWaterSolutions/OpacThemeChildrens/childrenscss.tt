@@ -549,6 +549,36 @@ a[href="#holdings"] {
     text-align: left;
 }
 
+#user_summary {
+    padding-top: 1em;
+    border: none;
+}
+
+#user_summary h2 {
+    border-bottom: 4px solid orange;
+    color: #ffffff;
+    font-family: 'Mouse Memoirs' !important;
+    text-align: center;
+    text-shadow: 1px 1px 2px #000;
+    font-size: 40px;
+    background: none;
+}
+
+#user_summary a {
+  color: #fff;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+#user_summary p {
+    display: none;
+}
+
+#user_summary ul {
+    display: flex;
+    justify-content: center;
+}
+
 [% IF custom_css %]
     [% custom_css %]
 [% END %]
