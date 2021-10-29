@@ -62,6 +62,29 @@ if ( $('#results').length ) {
         paint: ['format[src="/opac-tmpl/lib/famfamfam/paintbrush.png"]' , 'fa-paint-brush'],
         magnify: ['format[src="/opac-tmpl/lib/famfamfam/magnifier.png"]' , 'fa-search '],
     }
+    //add audience data from 008/22
+    $('table tbody tr').each( function() {
+        let this_row = $(this);
+        let bnum = $(this).find('input[name="biblionumber"]').attr('value');
+        let url = `/api/v1/public/biblios/${bnum}`;
+        if ( bnum ) {
+            $.ajax({
+                type: "GET",
+                accepts: {"*": "application/marc-in-json" },
+                url: url,
+                complete: function(data) {
+					let bibliodata = data.responseJSON.fields;
+                    bibliodata.forEach( function(arrayItem) {
+                    	if ( Object.keys(arrayItem)[0] == '008' ) {
+                        	let audience = arrayItem['008'].substring(22, 23);
+                            this_row.attr('data-audience' , audience );
+                        }
+                    });
+                }
+          });
+        }
+    });
+
     function makeIconsFA(className, faIcon) {
         $(`.${className}`).each( function() {
             $(this).replaceWith('<i class="materialtype fa '+ faIcon + ' ' +  className + ' aria-hidden="true"></i>&nbsp;')
@@ -104,7 +127,6 @@ if ( window.location.href.indexOf("[% url_regex2 %]") > -1 ) {
     addLimits("[% limit_loc2 %]", "loc");
     [% IF libraryname2 %]$('#libraryname').text("[% libraryname2 %]");[% END%]
 }
-
 [% IF custom_js %]
     [% custom_js%]
 [% END %]
