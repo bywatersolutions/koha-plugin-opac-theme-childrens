@@ -1,4 +1,5 @@
 [% USE raw %]
+[% USE Asset %]
 [% INCLUDE 'doc-head-open.inc' %]
   <title>Koha: Childrens OPAC Theme Plugin: Configuration</title>
   [% INCLUDE 'doc-head-close.inc' %]
@@ -14,7 +15,6 @@
       });
     });
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.css">
     <style>
         .CodeMirror {
             resize: vertical;
@@ -42,6 +42,8 @@
             padding: .5em;
         }
     </style>
+[% Asset.css("lib/codemirror/codemirror.min.css") | $raw %]
+[% Asset.css("lib/codemirror/lint.min.css") | $raw %]
 </head>
 <body>
 [% INCLUDE 'header.inc' %]
@@ -123,7 +125,21 @@
         <button style="margin-bottom:3em;" type="submit" value="Save">Save & Exit</button>
         <button style="margin-bottom:3em;" id="save_continue">Save & continue</button>
     </form>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"></script>
+        [% Asset.js( "lib/codemirror/codemirror.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/css.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/javascript.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/xml.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/yaml.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/lint.min.js" ) | $raw %]
+        [% Asset.js( "lib/linters/jshint.min.js" ) | $raw %]
+        [% Asset.js( "lib/linters/htmlhint.min.js" ) | $raw %]
+        [% Asset.js( "lib/linters/csslint.min.js" ) | $raw %]
+        [% Asset.js( "lib/linters/js-yaml.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/html-lint.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/javascript-lint.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/css-lint.min.js" ) | $raw %]
+        [% Asset.js( "lib/codemirror/yaml-lint.min.js" ) | $raw %]
+
         <script>
             var editor = CodeMirror.fromTextArea(document.getElementById('custom_js'), {
                 lineNumbers: true,
@@ -142,5 +158,4 @@
                 viewportMargin: Infinity,
             });
         </script>
-
 [% INCLUDE 'intranet-bottom.inc' %]
