@@ -82,6 +82,10 @@
                         <label for="limit_loc">Limit to the following shelving locations: </label>
                         <input name="limit_loc" id="limit_loc" type="text" size="160" value="[% limit_loc %]" />
                     </li>
+                    <li>
+                        <input type="checkbox" name="enable_audience" [% IF enable_audience %]checked="checked"[% END %] />
+                        <label for="enable_audience">Enable audience filters from MARC 008/22: </label>
+                    </li>
                 </ul>
             </fieldset>
 
@@ -107,6 +111,10 @@
                     <li class="form-row">
                         <label for="limit_loc2">Limit to the following shelving locations: </label>
                         <input name="limit_loc2" id="limit_loc2" type="text" size="160" value="[% limit_loc2 %]" />
+                    </li>
+                    <li>
+                        <input type="checkbox" name="enable_audience2" [% IF enable_audience2 %]checked="checked"[% END %] />
+                        <label for="enable_audience2">Enable audience filters from MARC 008/22: </label>
                     </li>
                 </ul>
             </fieldset>

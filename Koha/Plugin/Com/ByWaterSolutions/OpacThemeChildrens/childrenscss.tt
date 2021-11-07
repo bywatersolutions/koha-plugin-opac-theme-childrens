@@ -25,9 +25,14 @@ body {
 
 #opac-main #opac-main-search {
 	margin-top: 10em;
+    background: none;
 }
 
 #opac-main-search {
+    background: none !important;
+}
+
+#searchform .form-row {
     border-radius: 0.25rem;
 	box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
     -webkit-border-radius: 0px;
@@ -242,6 +247,7 @@ table tbody tr {
 
 #floating {
 	box-shadow: none;
+    width: 100%;
 }
 
 .availability > .label {
@@ -336,14 +342,18 @@ table tbody tr {
     border: none;
 }
 
+#audience_heading,
 .browse_heading {
 	text-align: center;
     font-family: 'Mouse Memoirs' !important;
     color: #fff;
     font-size: 50px;
-	margin-bottom: 1em;
     border-bottom: 4px solid orange;
     text-shadow: 1px 1px 2px #000
+}
+
+.browse_heading {
+    margin-bottom: 1em;
 }
 
 #opac-detail .main {
@@ -577,6 +587,191 @@ a[href="#holdings"] {
 #user_summary ul {
     display: flex;
     justify-content: center;
+}
+
+/* audience filter CSS */
+#audience_wrapper {
+  font-family: 'Mouse Memoirs' !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  width: 100%;
+  flex-wrap: wrap;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+#audience_wrapper .option{
+  background: #fff;
+  height: 40px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 10px;
+  border-radius: 300px;
+  cursor: pointer;
+  border: 2px solid lightgrey;
+  transition: all 0.3s ease;
+  padding: 0 2em;
+}
+#audience_wrapper .option .dot{
+  height: 20px;
+  width: 20px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 5px;
+}
+#audience_wrapper .option .dot::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: all 0.3s ease;
+}
+
+.preschool .dot::before {
+	background: orange;
+}
+
+.primary .dot::before {
+	background: purple;
+}
+
+.preadolescent .dot::before {
+	background: #c1cd23;
+}
+
+.adolescent .dot::before {
+	background: #3740c9;
+}
+
+.specialized .dot::before {
+	background: #b32317;
+}
+
+.general .dot::before {
+	background: teal;
+}
+
+.juvenile .dot::before {
+	background: darkgreen;
+}
+
+#audience_wrapper label {
+	margin-top: 3px !important;
+}
+
+#audience_wrapper input[type="radio"]{
+  display: none;
+}
+
+#preschool:checked:checked ~ .option-1,
+#specialized:checked:checked ~ .option-5,
+#general:checked:checked ~ .option-6,
+#juvenile:checked:checked ~ .option-7 {
+  border-color: orange;
+  background: orange;
+}
+
+#primary:checked:checked ~ .option-2 {
+  border-color: purple;
+  background: purple;
+}
+
+#preadolescent:checked:checked ~ .option-3 {
+	border-color: #c1cd23;
+    background: #c1cd23;
+}
+
+#adolescent:checked:checked ~ .option-4 {
+	border-color: #3740c9;
+    background: #3740c9;
+}
+
+#specialized:checked:checked ~ .option-5 {
+	border-color: #b32317;
+    background: #b32317;
+}
+
+#general:checked:checked ~ .option-6 {
+	border-color: teal;
+    background: teal;
+}
+
+#juvenile:checked:checked ~ .option-7 {
+	border-color: darkgreen;
+    background: darkgreen;
+}
+
+#preschool:checked:checked ~ .option-1 .dot,
+#primary:checked:checked ~ .option-2 .dot,
+#preadolescent:checked:checked ~ .option-3 .dot,
+#adolescent:checked:checked ~ .option-4 .dot,
+#specialized:checked:checked ~ .option-5 .dot,
+#general:checked:checked ~ .option-6 .dot,
+#juvenile:checked:checked ~ .option-7 .dot {
+  background: #fff;
+}
+#preschool:checked:checked ~ .option-1 .dot::before,
+#primary:checked:checked ~ .option-2 .dot::before,
+#preadolescent:checked:checked ~ .option-3 .dot::before,
+#adolescent:checked:checked ~ .option-4 .dot::before,
+#specialized:checked:checked ~ .option-5 .dot::before,
+#general:checked:checked ~ .option-6 .dot::before,
+#juvenile:checked:checked ~ .option-7 .dot::before {
+  opacity: 1;
+  transform: scale(1);
+}
+#audience_wrapper .option span {
+  font-size: 22px;
+  color: #000;
+}
+#preschool:checked:checked ~ .option-1 span,
+#primary:checked:checked ~ .option-2 span,
+#preadolescent:checked:checked ~ .option-3 span,
+#adolescent:checked:checked ~ .option-4 span,
+#specialized:checked:checked ~ .option-5 span,
+#general:checked:checked ~ .option-6 span,
+#juvenile:checked:checked ~ .option-7 span {
+  color: #fff;
+}
+
+#audience_close {
+  position: relative;
+  float: right;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  margin-top: 5px;
+}
+
+#opac-main #audience_close {
+   top: 320px !important;
+}
+
+#audience_close:hover {
+  opacity: 1;
+}
+#audience_close:before, #audience_close:after {
+  position: absolute;
+  content: ' ';
+  height: 33px;
+  width: 8px;
+  background-color: red;
+}
+#audience_close:before {
+  transform: rotate(45deg);
+}
+#audience_close:after {
+  transform: rotate(-45deg);
 }
 
 [% IF custom_css %]
