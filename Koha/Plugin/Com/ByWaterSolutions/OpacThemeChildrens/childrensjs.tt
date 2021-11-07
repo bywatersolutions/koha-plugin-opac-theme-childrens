@@ -1,4 +1,8 @@
 $(document).ready(function () {
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let this_query = urlParams.get('q');
+
 function addLimits(item, type) {
     if ( item ) {
         let limit_to_split = item.split('|');
@@ -9,7 +13,12 @@ function addLimits(item, type) {
 }
 
 /* build main search bar */
+
 $('#opac-main-search').html('<form name="searchform" method="get" action="/cgi-bin/koha/opac-search.pl" id="searchform"> <div class="form-row align-items-center"> <div class="col-sm-auto order-1 orde r-sm-1"><label for="masthead_search"> Search </label></div><div class="col-sm-auto order-2 order-sm-2"> <select name="idx" id="masthead_search" class="form-control"> <option value="">Library catalog</option> <option value="ti">Title</option> <option value="au">Author</option> <option value="su">Subject</option> <option value="nb">ISBN</option> <option value="ns">ISSN</option> <option value="se">Series</option> <option value="callnum">Call number</option> </select></div><div class="col order-4 order-sm-3"><input type="text" title="Type search term" class="transl1 form-control" id="translControl1" name="q" placeholder="What are you looking for?"/><span id="translControl"></span></div><div class="order-5 col-sm-auto"><button type="submit" id="searchsubmit" class="btn btn-primary">Go</button></div></div><div><div id="audience_heading" class=".label">Only show results for</div><a href="#" id="audience_close"></a></div><div id="audience_wrapper"><input type="radio" name="limit" id="preschool" value="ta:a"> <input type="radio" name="limit" id="primary" value="ta:b"> <input type="radio" name="limit" id="preadolescent" value="ta:c"> <input type="radio" name="limit" id="adolescent" value="ta:d"> <input type="radio" name="limit" id="specialized" value="ta:f"> <input type="radio" name="limit" id="general" value="ta:g"> <input type="radio" name="limit" id="juvenile" value="ta:j"> <label for="preschool" class="option option-1 preschool"> <div class="dot"></div><span>K - 2nd grade</span> </label> <label for="primary" class="option option-2 primary"> <div class="dot"></div><span>3rd -5th grade</span> </label> <label for="preadolescent" class="option option-3 preadolescent"> <div class="dot"></div><span>Middle School</span> </label> <label for="adolescent" class="option option-4 adolescent"> <div class="dot"></div><span>High School</span> </label> <label for="specialized" class="option option-5 specialized"> <div class="dot"></div><span>Specialized</span> </label> <label for="general" class="option option-6 general"> <div class="dot"></div><span>General</span> </label> <label for="juvenile" class="option option-7 juvenile"> <div class="dot"></div><span>Juvenile </span> </label> </div><input type="hidden" name="weight_search" value="1"/></form>');
+
+if ( this_query ) {
+    $('#translControl1').val(this_query);
+}
 
 /* main page*/
 if ( $('#opac-main').length ) {
@@ -128,8 +137,6 @@ if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
             $( 'input[type="radio"]' ).prop( "checked", false );
         });
         if ( $('#results').length ) {
-            let queryString = window.location.search;
-            let urlParams = new URLSearchParams(queryString);
             let audience = urlParams.get('limit');
             $('input[type="radio"]').each( function() {
                 if ( audience === $(this).val() ) {
@@ -140,36 +147,6 @@ if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
     }
 [% ELSE %]
     if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
-        $('#audience_heading, #audience_wrapper, #audience_close').remove();
-    }
-[% END %]
-
-if ( window.location.href.indexOf("[% url_regex2 %]") > -1 ) {
-    addLimits("[% limit_itype2 %]", "itype");
-    addLimits("[% limit_ccode2 %]", "ccode");
-    addLimits("[% limit_loc2 %]", "loc");
-    [% IF libraryname2 %]$('#libraryname').text("[% libraryname2 %]");[% END%]
-}
-[% IF enable_audience2 == 'on' %]
-    if ( window.location.href.indexOf("[% url_regex2 %]") > -1 ) {
-        $('#audience_close').click( function() {
-            $( 'input[type="radio"]' ).prop( "checked", false );
-        });
-
-
-        if ( $('#results').length ) {
-            let queryString = window.location.search;
-            let urlParams = new URLSearchParams(queryString);
-            let audience = urlParams.get('limit');
-            $('input[type="radio"]').each( function() {
-                if ( audience === $(this).val() ) {
-                    $(this).prop('checked' , true );
-                }
-            })
-        }
-    }
-[% ELSE %]
-    if ( window.location.href.indexOf("[% url_regex2 %]") > -1 ) {
         $('#audience_heading, #audience_wrapper, #audience_close').remove();
     }
 [% END %]

@@ -90,36 +90,6 @@
             </fieldset>
 
             <fieldset>
-                <legend>Define Kids OPAC #2</legend>
-                <ul class="wrapper">
-                    <li class="form-row">
-                        <label for="url_regex2">Kids OPAC URL #2: </label>
-                        <input name="url_regex2" id="url_regex2" type="text" size="160" value="[% url_regex2 %]" />
-                    </li>
-                    <li class="form-row">
-                        <label for="libraryname2">Library name: </label>
-                        <input name="libraryname2" id="libraryname2" type="text" size="160" value="[% libraryname2 %]" />
-                    </li>
-                    <li class="form-row">
-                        <label for="limit_itype2">Limit to the following item types: </label>
-                        <input name="limit_itype2" id="limit_itype2" type="text" size="160" value="[% limit_itype2 %]" />
-                    </li>
-                    <li class="form-row">
-                        <label for="limit_ccode2">Limit to the following collection codes: </label>
-                        <input name="limit_ccode2" id="limit_ccode2" type="text" size="160" value="[% limit_ccode2 %]" />
-                    </li>
-                    <li class="form-row">
-                        <label for="limit_loc2">Limit to the following shelving locations: </label>
-                        <input name="limit_loc2" id="limit_loc2" type="text" size="160" value="[% limit_loc2 %]" />
-                    </li>
-                    <li>
-                        <input type="checkbox" name="enable_audience2" [% IF enable_audience2 %]checked="checked"[% END %] />
-                        <label for="enable_audience2">Enable audience filters from MARC 008/22: </label>
-                    </li>
-                </ul>
-            </fieldset>
-
-            <fieldset>
                 <legend>Custom JS/CSS</legend>
                 <label for="custom_js">Custom JavaScript: </label>
                 <textarea name="custom_js" id="custom_js" style="width:100%;" rows="20">[% custom_js | html%]</textarea>

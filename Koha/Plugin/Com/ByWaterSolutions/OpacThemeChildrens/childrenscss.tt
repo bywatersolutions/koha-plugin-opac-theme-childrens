@@ -779,10 +779,22 @@ a[href="#holdings"] {
 [% END %]
 
 @media (max-width: 768px) {
-  table tbody {
-  	  grid-template-columns: 96%;
-  }	
-  #kids_browse {
-    grid-template-columns: repeat(3,150px);
-  }
+    #results table tbody {
+        grid-template-columns: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #kids_browse {
+        grid-template-columns: repeat(3,150px);
+    }
+}
+
+@media (max-width: 576px) {
+    #kids_browse {
+        grid-template-columns: repeat(2,150px);
+    }
+    #searchsubmit {
+        width: 100%;
+        border-radius: 80px;
+    }
 }
