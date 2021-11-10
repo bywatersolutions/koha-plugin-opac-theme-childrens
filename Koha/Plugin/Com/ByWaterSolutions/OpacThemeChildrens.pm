@@ -101,38 +101,35 @@ sub configure {
 }
 
 sub opac_js {
-        my ( $self ) = @_;
+    my ( $self ) = @_;
 
-        my $re = $self->retrieve_data('url_regex');
-        my $re2 = $self->retrieve_data('url_regex2');
+    my $re = $self->retrieve_data('url_regex');
+    my $re2 = $self->retrieve_data('url_regex2');
 
-        if ( $ENV{HTTP_HOST} =~ m/$re/ ) {
+    my @re = ( $re, $re2 );
+    foreach my $r ( @re ) {
+        if ( $r && $ENV{HTTP_HOST} =~ m/$re/ ) {
             my $js = $self->retrieve_data('childrens_js');
             return "<script>".$js."</script>" if $js;
         }
-
-        if ( $ENV{HTTP_HOST} =~ m/$re2/ ) {
-            my $js = $self->retrieve_data('childrens_js');
-            return "<script>".$js."</script>" if $js;
-        }
+    }
 }
 
 sub opac_head {
-        my ( $self ) = @_;
+    my ( $self ) = @_;
 
-        my $re = $self->retrieve_data('url_regex');
-        my $re2 = $self->retrieve_data('url_regex2');
+    my $re = $self->retrieve_data('url_regex');
+    my $re2 = $self->retrieve_data('url_regex2');
 
-        if ( $ENV{HTTP_HOST} =~ m/$re/ ) {
-            my $css = $self->retrieve_data('childrens_css') // "";
+    my @re = ( $re, $re2 );
+    foreach my $r ( @re ) {
+        if ( $r && $ENV{HTTP_HOST} =~ m/$re/ ) {
+            my $css = $self->retrieve_data('childrens_css') // q{};
             return "<style>".$css."</style>" if $css;
         }
-
-        if ( $ENV{HTTP_HOST} =~ m/$re2/ ) {
-            my $css = $self->retrieve_data('childrens_css') // "";
-            return "<style>".$css."</style>" if $css;
-        }
+    }
 }
+
 ## This is the 'install' method. Any database tables or other setup that should
 ## be done when the plugin if first installed should be executed in this method.
 ## The installation method should always return true if the installation succeeded
