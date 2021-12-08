@@ -125,7 +125,7 @@ if ( window.location.href.indexOf("/cgi-bin/koha/opac-user.pl?#opac-user-holds")
 }
 
 /* list pages */
-if ( $('#opac-userlists').length ) {
+if ( $('#opac-userlists').length || $('#opac-lists').length ) {
     $('.maincontent').parent().addClass('col-lg-12').removeClass('col-lg-10');    
     $('.availability .label').text('Where can I find it?');
     $('.series .label').text('Find more in this series: ');

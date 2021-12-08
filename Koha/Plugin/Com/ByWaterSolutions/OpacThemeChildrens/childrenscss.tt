@@ -89,7 +89,8 @@ body {
 body,
 .main,
 #results tbody,
-#opac-userlists tbody {
+#opac-userlists tbody,
+#opac-lists tbody {
     background: #29b6f6;
 }
 
@@ -98,14 +99,16 @@ body,
 }
 
 #results table tbody,
-#opac-userlists table tbody {
+#opac-userlists table tbody,
+#opac-lists table tbody {
 	display: grid;
     grid-template-columns: 50% 50%;
     grid-gap: 10px;
 }
 
 #results table tbody tr,
-#opac-userlists table tbody tr {
+#opac-userlists table tbody tr,
+#opac-lists table tbody tr {
 	border: 4px solid #000;
 }
 
@@ -775,11 +778,13 @@ a[href="#holdings"] {
   transform: rotate(-45deg);
 }
 
-#opac-userlists tbody {
+#opac-userlists tbody,
+#opac-lists tbody {
     font-size: 140%;
 }
 
 #opac-userlists h1,
+#opac-lists h1
 #numresults {
     text-align: center;
     font-family: 'Mouse Memoirs' !important;
@@ -787,7 +792,8 @@ a[href="#holdings"] {
     font-size: 50px;
 }
 
-#opac-userlists .actions-menu {
+#opac-userlists .actions-menu,
+#opac-lists .actions-menu {
     border-bottom: 5px solid #9e1f63;
 }
 
