@@ -124,6 +124,18 @@ if ( window.location.href.indexOf("/cgi-bin/koha/opac-user.pl?#opac-user-holds")
     $('#userdetails').replaceWith('<h1>Your hold has been placed!</h1>');
 }
 
+/* list pages */
+if ( $('#opac-userlists').length ) {
+    $('.maincontent').parent().addClass('col-lg-12').removeClass('col-lg-10');    
+    $('.availability .label').text('Where can I find it?');
+    $('.series .label').text('Find more in this series: ');
+    $('.series a').text('Here')
+    $('.online_resources .label').text('Get it online: ');
+    $('.online_resources a').text('Here');
+    $('.available .AvailabilityLabel').text('Copies available at: ');
+    $('.page-link[aria-label="Go to the previous page"]').replaceWith('<a class="page-link" href="/cgi-bin/koha/opac-search.pl?idx=kw&amp;q=ee&amp;offset=0&amp;sort_by=relevance_dsc&amp;count=20" aria-label="Go to the previous page"> <i class="fa fa-fw fa-angle-left" aria-hidden="true"></i>  Back</a>');
+}
+
 if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
     addLimits("[% limit_itype %]", "itype");
     addLimits("[% limit_ccode %]", "ccode");
