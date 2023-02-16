@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Comic+Neue");
+@import url("https://fonts.googleapis.com/css?family=Lexend");
 @import url("https://fonts.googleapis.com/css?family=Mouse+Memoirs");
 body {
-	font-family: 'Comic Neue' !important;
+	font-family: 'Lexend' !important;
 }
 
 #opacheader,
@@ -21,7 +21,8 @@ body {
 #nologininstructions,
 .rsssearchicon,
 .breadcrumb,
-#remove-selected {
+#remove-selected,
+label[for="masthead_search"] {
 	display: none;
 }
 
@@ -30,25 +31,30 @@ body {
     background: none;
 }
 
+#opac-main .container-fluid .row,
+#results .container-fluid .row {
+    align-items: center;
+}
+
+#libraryname {
+    color: #56B4E9;
+    font-size: 5vw;
+}
+
 #opac-main-search {
     background: none !important;
 }
 
 #searchform .form-row {
-    border-radius: 0.25rem;
-	box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 50px;
-    padding: .8em;
-    margin: .5em 0;
-    margin-top: 0.5em;
-    background: #ffffff !important;  
+      background-color: #C1CD23 !important;
+      border-radius: 100px;
+      margin-top: 1em;
+      padding: 1.3em 0;
 }
 
 #searchsubmit {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background: #7a5cf0;
     display: flex;
@@ -59,14 +65,21 @@ body {
     cursor: pointer;
 }
 
+#searchsubmit img {
+    width: 100%;
+}
+
 #translControl1 {
+    background: #fff;
+    color: black;
+    height: 100px;
+    font-family: 'Lexend',sans-serif !important;
+    font-size: xx-large;
+    padding: 50px;
     outline: none;
     border: 0;
-    background: #7a5cf0;
     border-radius: 50px;
-    padding: 15px 20px;
-    height: 50px;
-    color: #fff;
+    color: #000;
 }
 
 #translControl1::placeholder {
@@ -91,7 +104,11 @@ body,
 #results tbody,
 #opac-userlists tbody,
 #opac-lists tbody {
-    background: #29b6f6;
+    background: #0072b2;
+}
+
+#results .author li {
+    display: inline;
 }
 
 .main {
@@ -109,7 +126,7 @@ body,
 #results table tbody tr,
 #opac-userlists table tbody tr,
 #opac-lists table tbody tr {
-	border: 4px solid #000;
+	border: 4px solid #56B4E9;
 }
 
 table tbody tr {
@@ -140,8 +157,6 @@ table tbody tr {
 }
 
 .title_summary {
-	border-top: 5px solid #00abbf;
-    border-bottom: 5px solid #9e1f63;
     font-size: 140%;
     padding-top: 10px;
 }
@@ -154,9 +169,13 @@ table tbody tr {
     font-weight: bolder;
 }
 
+.series {
+    padding-top: 1em;
+}
+
 .series a {
     background: green;
-    color: #fff;
+    color: #fff !important;
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: bolder;
@@ -171,7 +190,7 @@ table tbody tr {
 
 .online_resources a {
     background: purple;
-    color: #fff;
+    color: #fff !important;
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: bolder;
@@ -272,15 +291,19 @@ table tbody tr {
 
 .materialtype {
 	float: right;
-    font-size: 50px !important;
     margin: -14px;
     margin-right: -13px;
-    background: #29b6f6;
-    color: #fff;
     padding: 10px;
     border-top: 1px solid #000;
 	border-right: 1px solid #000;
     text-shadow: 1px 1px 2px #000;
+    color: #0072B2;
+    opacity: .15;
+    font-size: 200px;
+}
+
+.no-image {
+    display: none;
 }
 
 .results_material_type .label {
@@ -296,7 +319,7 @@ table tbody tr {
     font-family: 'Mouse Memoirs' !important;
     line-height:49px;
 	text-align: center;
-    padding-top: 15px;
+    padding-top: 30px;
 	padding-bottom: 15px;
     text-shadow: 1px 1px 2px #000;
 }
@@ -313,7 +336,7 @@ table tbody tr {
 #kids_browse {
 	display: grid;
 	grid-template-columns: repeat(5, 150px);
-    grid-row-gap: 1em;
+    grid-gap: 2vw;
     justify-content: center;
 }
 
@@ -331,12 +354,12 @@ table tbody tr {
 #kids_browse .subject img {
 	width: 120px;
     background: #fff;
-    border: 4px solid orange;
+    border: 4px solid #56B4E9;
     border-radius: 50%;
     box-shadow: 0px 0px 10px 5px #dcdcdc;
     width: 120px;
 	height: 120px;
-    box-shadow: 0 0 0 8px green;
+    box-shadow: 0 0 0 8px #C1CD23;
     transition: border 2s ease-out;
 }
 
@@ -784,17 +807,21 @@ a[href="#holdings"] {
 }
 
 #opac-userlists h1,
-#opac-lists h1
+#opac-lists h1,
 #numresults {
     text-align: center;
     font-family: 'Mouse Memoirs' !important;
-    color: #fff;
+    color: #fff !important;
     font-size: 50px;
 }
 
 #opac-userlists .actions-menu,
 #opac-lists .actions-menu {
     border-bottom: 5px solid #9e1f63;
+}
+
+.numcol {
+    display: none;
 }
 
 [% IF custom_css %]
