@@ -55,7 +55,8 @@
 <div id="doc3">
     <h3>Koha: Childrens OPAC Theme Plugin: Configuration</h3>
 
-    <form id="configureForm" method="get">
+    <form id="configureForm" method="post">
+        [% INCLUDE 'csrf-token.inc' %]
         <!-- Always pass these two parameters so the plugin system knows what to execute! -->
         <input type="hidden" name="class" value="[% CLASS %]"/>
         <input type="hidden" name="method" value="[% METHOD %]"/>
