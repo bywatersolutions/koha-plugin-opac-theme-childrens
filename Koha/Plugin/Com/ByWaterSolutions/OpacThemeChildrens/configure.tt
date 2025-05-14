@@ -69,42 +69,62 @@
                     </div>
                     </div>
 
-                    <li class="form-row">
-                        <label for="libraryname">Library name: </label>
-                        <input name="libraryname" id="libraryname" type="text" size="160" value="[% libraryname %]" />
-                    </li>
-                    <li class="form-row">
-                        <label for="limit_itype">Limit to the following item types: </label>
-                        <input name="limit_itype" id="limit_itype" type="text" size="160" value="[% limit_itype %]" />
-                    </li>
-                    <li class="form-row">
-                        <label for="limit_ccode">Limit to the following collection codes: </label>
-                        <input name="limit_ccode" id="limit_ccode" type="text" size="160" value="[% limit_ccode %]" />
-                    </li>
-                    <li class="form-row">
-                        <label for="limit_loc">Limit to the following shelving locations: </label>
-                        <input name="limit_loc" id="limit_loc" type="text" size="160" value="[% limit_loc %]" />
-                    </li>
-                    <li>
-                        <input type="checkbox" name="enable_audience" [% IF enable_audience %]checked="checked"[% END %] />
-                        <label for="enable_audience">Enable audience filters from MARC 008/22: </label>
-                    </li>
-                </ul>
+                    <div class="mb-3 row">
+                        <label for="libraryname" class="col-sm-3 col-form-label">Library name: </label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="libraryname" name="libraryname" value="[% libraryname %]">
+                    </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="limit_itype" class="col-sm-3 col-form-label">Limit to the following item types: </label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="limit_itype" name="limit_itype" value="[% limit_itype %]">
+                    </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="limit_ccode" class="col-sm-3 col-form-label">Limit to the following collection codes: </label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="limit_ccode" name="limit_ccode" value="[% limit_ccode %]">
+                    </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="limit_loc" class="col-sm-3 col-form-label">Limit to the following shelving locations: </label>
+                        <div class="col-sm-9">
+                        <input type="text" class="form-control" id="limit_loc" name="limit_loc" value="[% limit_loc %]">
+                    </div>
+                    </div>
+
+                    <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="enable_audience" id="enable_audience" [% IF enable_audience %]checked[% END %]>
+                    <label class="form-check-label" for="enable_audience">Enable audience filters from MARC 008/22</label>
+                    </div>
             </fieldset>
 
-            <fieldset>
+            <fieldset class="mb-4">
                 <legend>Custom JS/CSS</legend>
-                <label for="custom_js">Custom JavaScript: </label>
-                <textarea name="custom_js" id="custom_js" style="width:100%;" rows="20">[% custom_js | html%]</textarea>
-                <br />
+
+                <div class="mb-3">
+                <label for="custom_js" class="form-label">Custom JavaScript: </label>
+                <textarea name="custom_js" id="custom_js" class="form-control" rows="20">[% custom_js | html %]</textarea>
+                </div>
+
                 <hr />
-                <label for="custom_css">Custom CSS: </label>
-                <textarea name="custom_css" id="custom_css" style="width:100%" rows="20">[% custom_css | html%]</textarea>
+
+                <div class="mb-3">
+                <label for="custom_css" class="form-label">Custom CSS: </label>
+                <textarea name="custom_css" id="custom_css" class="form-control" rows="20">[% custom_css | html %]</textarea>
+                </div>
             </fieldset>
+
         <input type="hidden" name="save" value="1" />
 
-        <button style="margin-bottom:3em;" type="submit" value="Save">Save & Exit</button>
-        <button style="margin-bottom:3em;" id="save_continue">Save & continue</button>
+        <div class="d-flex gap-2 mt-4 mb-5">
+        <button type="submit" class="btn btn-primary">Save & Exit</button>
+        <button type="button" id="save_continue" class="btn btn-secondary">Save & Continue</button>
+        </div>
     </form>
         [% Asset.js( "lib/codemirror/codemirror.min.js" ) | $raw %]
         [% Asset.js( "lib/codemirror/css.min.js" ) | $raw %]
