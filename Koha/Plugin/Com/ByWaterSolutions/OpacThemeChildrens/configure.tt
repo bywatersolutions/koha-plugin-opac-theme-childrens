@@ -60,13 +60,15 @@
         <!-- Always pass these two parameters so the plugin system knows what to execute! -->
         <input type="hidden" name="class" value="[% CLASS %]"/>
         <input type="hidden" name="method" value="[% METHOD %]"/>
-            <fieldset>
+            <fieldset class="mb-4">
                 <legend>Define Kids OPAC #1</legend>
-                <ul class="wrapper">
-                    <li class="form-row">
-                        <label for="url_regex">Kids OPAC URL #1: </label>
-                        <input name="url_regex" id="url_regex" type="text" size="160" value="[% url_regex %]" />
-                    </li>
+                    <div class="mb-3 row">
+                        <label for="url_regex" class="col-sm-3 col-form-label">Kids OPAC URL #1: </label>
+                        <div class="col-sm-9">
+                        <input name="text" class="form-control" id="url_regex" name="url_regex" value="[% url_regex %]" />
+                    </div>
+                    </div>
+
                     <li class="form-row">
                         <label for="libraryname">Library name: </label>
                         <input name="libraryname" id="libraryname" type="text" size="160" value="[% libraryname %]" />
