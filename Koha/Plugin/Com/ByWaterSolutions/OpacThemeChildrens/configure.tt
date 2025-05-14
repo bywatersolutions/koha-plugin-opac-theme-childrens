@@ -65,7 +65,7 @@
                     <div class="mb-3 row">
                         <label for="url_regex" class="col-sm-3 col-form-label">Kids OPAC URL #1: </label>
                         <div class="col-sm-9">
-                        <input name="text" class="form-control" id="url_regex" name="url_regex" value="[% url_regex %]" />
+                        <input class="form-control" id="url_regex" name="url_regex" value="[% url_regex %]" />
                     </div>
                     </div>
 
