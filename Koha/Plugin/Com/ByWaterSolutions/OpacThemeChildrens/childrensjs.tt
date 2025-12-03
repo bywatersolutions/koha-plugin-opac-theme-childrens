@@ -168,34 +168,50 @@ if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
 (function () {
   // Try to find "account" and "logout" links in the normal Koha navbar
   var $members      = $('#members');
-  var $accountLink  = $members.find('a.login-link, a[href*="opac-user.pl"]').first();
-  var $logoutLink   = $members.find('a[href*="opac-logout.pl"], a[href*="opac-auth.pl?logout"]').first();
+  var $loginBox  = $('#login');
 
-  if (!$accountLink.length) {
-  return;
-  }
+  var $logoutLink = $members.find(
+          'a#logout, a[href*="logout"], a:contains("Log out")'
+  ).first();
 
   var isLoggedIn = $logoutLink.length > 0;
+  var $accountLink;
   var loginHtml;
 
   if (isLoggedIn) {
-  var nameText = $.trim($accountLink.text()) || 'your account';
+  $accountLink = $members.find(
+        'a[href*="opac-user.pl"], a[href*="opac-account.pl"]'
+  ).first();
+
+  var nameText =
+  $.trim($members.find('.loggedinusername, .navbar-text, .userlabel').text()) ||
+  $.trim($accountLink.text()) ||
+  'your account';
+
   loginHtml =
       '<div id="kids-login-status" class="kids-login-status">' +
-          '<span class="kids-login-text">Signed in as <strong>' + nameText + '</strong></span>' +
-          ' <span aria-hidden="true"> • </span> ' +
-          '<a href="' + $logoutLink.attr('href') + '" class="kids-logout-link">Log out</a>' +
-          '</div>';
+      '<span class="kids-login-text">Signed in as <strong>' + nameText + '</strong></span>' +
+      ' <span aria-hidden="true"> • </span> ' +
+      '<a href="' + $logoutLink.attr('href') + '" class="kids-logout-link">Log out</a>' +
+      '</div>';
   } else {
-      // logged out
-      loginHtml =
-          '<div id="kids-login-status" class="kids-login-status">' +
-              '<a href="' + $accountLink.attr('href') + '" class="kids-login-link">Log in</a>' +
-          '</div>';
+      $accountLink = $loginBox.find(
+              'a[href*="opac-user.pl"], a[href*="opac-auth.pl"]'
+  ).first();
+
+  if (!$accountLink.length) {
+      return;
+    }
+
+  loginHtml =
+      '<div id="kids-login-status" class="kids-login-status">' +
+      '<a href="' + $accountLink.attr('href') + '" class="kids-login-link">Log in</a>' +
+      '</div>';
   }
 
-  $('#opac-main-search').before(loginHtml);
+  $('body').append(loginHtml);
   })();
+
 
 [% IF custom_js %]
     [% custom_js%]
