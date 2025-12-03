@@ -824,6 +824,33 @@ a[href="#holdings"] {
     display: none;
 }
 
+/* Kids OPAC login status in top-right corner */
+#kids-login-status,
+.kids-login-status {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.4em 0.8em;
+    border-radius: 999px;
+    font-family: 'Mouse Memoirs', 'Lexend', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.kids-login-status a {
+    color: #ff951c;
+    text-decoration: underline;
+}
+
+.kids-login-status a:hover,
+.kids-login-status a:focus {
+    color: #ffd28a;
+    text-decoration: none;
+}
+
 [% IF custom_css %]
     [% custom_css %]
 [% END %]

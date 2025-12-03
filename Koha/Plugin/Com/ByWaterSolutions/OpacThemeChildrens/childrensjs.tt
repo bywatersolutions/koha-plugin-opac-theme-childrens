@@ -164,6 +164,39 @@ if ( window.location.href.indexOf("[% url_regex %]") > -1 ) {
     }
 [% END %]
 
+// --- Kids login / logout indicator ---
+(function () {
+  // Try to find "account" and "logout" links in the normal Koha navbar
+  var $members      = $('#members');
+  var $accountLink  = $members.find('a.login-link, a[href*="opac-user.pl"]').first();
+  var $logoutLink   = $members.find('a[href*="opac-logout.pl"], a[href*="opac-auth.pl?logout"]').first();
+
+  if (!$accountLink.length) {
+  return;
+  }
+
+  var isLoggedIn = $logoutLink.length > 0;
+  var loginHtml;
+
+  if (isLoggedIn) {
+  var nameText = $.trim($accountLink.text()) || 'your account';
+  loginHtml =
+      '<div id="kids-login-status" class="kids-login-status">' +
+          '<span class="kids-login-text">Signed in as <strong>' + nameText + '</strong></span>' +
+          ' <span aria-hidden="true"> • </span> ' +
+          '<a href="' + $logoutLink.attr('href') + '" class="kids-logout-link">Log out</a>' +
+          '</div>';
+  } else {
+      // logged out
+      loginHtml =
+          '<div id="kids-login-status" class="kids-login-status">' +
+              '<a href="' + $accountLink.attr('href') + '" class="kids-login-link">Log in</a>' +
+          '</div>';
+  }
+
+  $('#opac-main-search').before(loginHtml);
+  })();
+
 [% IF custom_js %]
     [% custom_js%]
 [% END %]
