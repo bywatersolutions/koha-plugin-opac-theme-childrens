@@ -59,18 +59,18 @@ jobs:
         else
           export KOHA_IMAGE=${{ steps.koha-version.outputs.version-major-minor }}
         fi
-        ktd --name OpacThemeChildrens --plugins up -d
+        ktd --name opacthemechildrens --plugins up -d
 
     - name: Wait for KTD to be ready
       run: |
         cd ../koha-testing-docker
         export KTD_HOME=$(pwd)
-        ktd --name OpacThemeChildrens --wait-ready 120
+        ktd --name opacthemechildrens --wait-ready 120
 
     - name: Run plugin tests
       run: |
         export KTD_HOME=$(pwd)/../koha-testing-docker
-        ktd --name OpacThemeChildrens --shell --run "
+        ktd --name opacthemechildrens --shell --run "
           cd /kohadevbox/plugins/${{ env.GITHUB_REPO }} &&
           export PERL5LIB=\$PERL5LIB:. &&
           prove -v -r -s t/
@@ -81,17 +81,17 @@ jobs:
       run: |
         export KTD_HOME=$(pwd)/../koha-testing-docker
         echo "=== KTD instance status ==="
-        ktd --name OpacThemeChildrens --list || true
+        ktd --name opacthemechildrens --list || true
         echo "=== Koha error logs ==="
-        ktd --name OpacThemeChildrens --shell --run "tail -50 /var/log/koha/kohadev/plack-intranet-error.log" || true
+        ktd --name opacthemechildrens --shell --run "tail -50 /var/log/koha/kohadev/plack-intranet-error.log" || true
         echo "=== Container logs ==="
-        docker logs OpacThemeChildrens-koha-1 --tail 50 || true
+        docker logs opacthemechildrens-koha-1 --tail 50 || true
 
     - name: Cleanup KTD instance
       if: always()
       run: |
         export KTD_HOME=$(pwd)/../koha-testing-docker
-        ktd --name OpacThemeChildrens down || true
+        ktd --name opacthemechildrens down || true
 
   release:
     name: Build & Release
@@ -139,7 +139,7 @@ jobs:
         release-version: ${{ steps.myvars.outputs.tag_version }}
         release-name: ${{ steps.myvars.outputs.github_repo }}
         minimum-version: ${{ steps.koha-version-oldstable.outputs.version-major-minor }}
-        plugin-module: "Koha/Plugin/Com/ByWaterSolutions/KitchenSink.pm"
+        plugin-module: "Koha/Plugin/Com/ByWaterSolutions/OpacThemeChildrens.pm"
 
     - name: See if kpz was created
       run: |
