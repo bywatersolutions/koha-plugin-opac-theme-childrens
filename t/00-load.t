@@ -16,36 +16,20 @@
 # along with Koha; if not, see <http://www.gnu.org/licenses>.
 
 use Modern::Perl;
-
 use Test::More;
-use File::Spec;
-use File::Find;
+use FindBin;
 
-=head1 DESCRIPTION
+# Add the plugin repo itself to @INC
+# t/ is next to Koha/, so ".." is the plugin root
+use lib "$FindBin::Bin/..";
 
-=cut
+# Koha libs (paths used inside KTD containers)
+use lib '/kohadevbox/koha/';
+use lib '/kohadevbox/koha/misc/translator/';
+use lib '/kohadevbox/koha/t/lib/';
 
-my $lib = '/var/lib/koha/kohadev/plugins'; # Could be changed to $Bin/..
+my $module = 'Koha::Plugin::Com::ByWaterSolutions::OpacThemeChildrens';
 
-unshift( @INC, $lib );
-unshift( @INC, '/kohadevbox/koha/' );
-unshift( @INC, '/kohadevbox/koha/misc/translator/' );
-unshift( @INC, '/kohadevbox/koha/t/lib/' );
-
-find(
-    {
-        bydepth  => 1,
-        no_chdir => 1,
-        wanted   => sub {
-            my $m = $_;
-            return unless $m =~ s/[.]pm$//;
-            $m =~ s{^.*/Koha/}{Koha/};
-            $m =~ s{/}{::}g;
-            use_ok($m) || BAIL_OUT("***** PROBLEMS LOADING FILE '$m'");
-        },
-    },
-    $lib
-);
+use_ok($module) or BAIL_OUT("***** PROBLEMS LOADING FILE '$module'");
 
 done_testing();
-
