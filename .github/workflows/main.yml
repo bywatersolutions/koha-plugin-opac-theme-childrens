@@ -59,18 +59,18 @@ jobs:
         else
           export KOHA_IMAGE=${{ steps.koha-version.outputs.version-major-minor }}
         fi
-        ktd --name kitchensink --plugins up -d
+        ktd --name OpacThemeChildrens --plugins up -d
 
     - name: Wait for KTD to be ready
       run: |
         cd ../koha-testing-docker
         export KTD_HOME=$(pwd)
-        ktd --name kitchensink --wait-ready 120
+        ktd --name OpacThemeChildrens --wait-ready 120
 
     - name: Run plugin tests
       run: |
         export KTD_HOME=$(pwd)/../koha-testing-docker
-        ktd --name kitchensink --shell --run "
+        ktd --name OpacThemeChildrens --shell --run "
           cd /kohadevbox/plugins/${{ env.GITHUB_REPO }} &&
           export PERL5LIB=\$PERL5LIB:. &&
           prove -v -r -s t/
@@ -81,17 +81,17 @@ jobs:
       run: |
         export KTD_HOME=$(pwd)/../koha-testing-docker
         echo "=== KTD instance status ==="
-        ktd --name kitchensink --list || true
+        ktd --name OpacThemeChildrens --list || true
         echo "=== Koha error logs ==="
-        ktd --name kitchensink --shell --run "tail -50 /var/log/koha/kohadev/plack-intranet-error.log" || true
+        ktd --name OpacThemeChildrens --shell --run "tail -50 /var/log/koha/kohadev/plack-intranet-error.log" || true
         echo "=== Container logs ==="
-        docker logs kitchensink-koha-1 --tail 50 || true
+        docker logs OpacThemeChildrens-koha-1 --tail 50 || true
 
     - name: Cleanup KTD instance
       if: always()
       run: |
         export KTD_HOME=$(pwd)/../koha-testing-docker
-        ktd --name kitchensink down || true
+        ktd --name OpacThemeChildrens down || true
 
   release:
     name: Build & Release
