@@ -49,8 +49,18 @@
 [% INCLUDE 'header.inc' %]
 [% INCLUDE 'cat-search.inc' %]
 
-<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; Childrens OPAC Theme &rsaquo; Configuration</div>
-
+<nav id="breadcrumbs" aria-label="breadcrumb">
+  <ol class="breadcrumb mb-3">
+    <li class="breadcrumb-item">
+      <a href="/cgi-bin/koha/mainpage.pl">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a>
+    </li>
+    <li class="breadcrumb-item">Childrens OPAC Theme</li>
+    <li class="breadcrumb-item active" aria-current="page">Configuration</li>
+  </ol>
+</nav>
 
 <div id="doc3">
     <h3>Koha: Childrens OPAC Theme Plugin: Configuration</h3>
