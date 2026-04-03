@@ -27,8 +27,15 @@ label[for="masthead_search"] {
 }
 
 #opac-main #opac-main-search {
-	margin-top: 10em;
+	margin-top: 2rem;
     background: none;
+}
+
+#opac-main-search form .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 #opac-main .container-fluid .row,
@@ -53,8 +60,9 @@ label[for="masthead_search"] {
 }
 
 #searchsubmit {
-    width: 100px;
-    height: 100px;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
     border-radius: 50%;
     background: #7a5cf0;
     display: flex;
@@ -66,16 +74,19 @@ label[for="masthead_search"] {
 }
 
 #searchsubmit img {
-    width: 100%;
+    width: 60%;
+    height: auto;
 }
 
 #translControl1 {
     background: #fff;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 50px;
     color: black;
-    height: 100px;
     font-family: 'Lexend',sans-serif !important;
-    font-size: xx-large;
-    padding: 50px;
     outline: none;
     border: 0;
     border-radius: 50px;
@@ -315,13 +326,22 @@ table tbody tr {
 }
 
 #kids_head {
-    font-size: 50px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-family: 'Mouse Memoirs' !important;
-    line-height:49px;
+    line-height: 1.1;
 	text-align: center;
     padding-top: 30px;
 	padding-bottom: 15px;
     text-shadow: 1px 1px 2px #000;
+}
+
+#opac-main-search,
+#kids_head {
+    width: 100%;
+}
+
+body {
+    overflow-x: hidden;
 }
 
 .welcome {
@@ -870,8 +890,16 @@ a[href="#holdings"] {
     #kids_browse {
         grid-template-columns: repeat(2,150px);
     }
+
+@media (max-width: 768px) {
+    #opac-main-search form .row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
     #searchsubmit {
         width: 100%;
-        border-radius: 80px;
+        height: 48px;
+        border-radius: 50px;
     }
 }
