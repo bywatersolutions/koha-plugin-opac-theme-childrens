@@ -60,9 +60,8 @@ label[for="masthead_search"] {
 }
 
 #searchsubmit {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
+    width: clamp(48px, 6vw, 72px);
+    height: clamp(48px, 6vw, 72px);
     border-radius: 50%;
     background: #7a5cf0;
     display: flex;
@@ -71,11 +70,32 @@ label[for="masthead_search"] {
     color: #fff;
     margin-right: 15px;
     cursor: pointer;
+    padding: 0;
+    border: 2px solid transparent;
 }
 
-#searchsubmit img {
-    width: 60%;
-    height: auto;
+#searchsubmit .search-icon {
+    width: 62%;
+    height: 62%;
+    display: block;
+}
+
+#searchsubmit:hover,
+#searchsubmit:focus {
+    color: #fff;
+}
+
+#searchsubmit:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 575.98px) {
+    #searchsubmit {
+        width: 56px;
+        height: 56px;
+        margin-right: 0;
+    }
 }
 
 #translControl1 {

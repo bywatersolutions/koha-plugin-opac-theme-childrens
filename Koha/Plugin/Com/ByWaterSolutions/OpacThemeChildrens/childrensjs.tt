@@ -14,7 +14,17 @@ function addLimits(item, type) {
 
 /* build main search bar */
 
-$('#opac-main-search').closest('.col').replaceWith('<div id="opac-main-search" class="col-12 col-md-9"><form name="searchform" method="get" action="/cgi-bin/koha/opac-search.pl" id="searchform"> <div class="row align-items-center"> <div class="col-auto order-1"><label for="masthead_search">Search</label></div><div class="col-auto order-2"> <select name="idx" id="masthead_search" class="form-select"> <option value="">Library catalog</option> <option value="ti">Title</option> <option value="au">Author</option> <option value="su">Subject</option> <option value="nb">ISBN</option> <option value="ns">ISSN</option> <option value="se">Series</option> <option value="callnum">Call number</option> </select></div><div class="col order-3"><input type="text" title="Type search term" class="form-control" id="translControl1" name="q" placeholder="What are you looking for?"/><span id="translControl"></span></div><div class="order-4 col-auto"><button type="submit" id="searchsubmit" class="btn btn-primary"><img src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Magnifying%20glass%20tilted%20left/3D/magnifying_glass_tilted_left_3d.png"></button></div></div></form></div>');
+$('#opac-main-search').closest('.col').replaceWith('<div id="opac-main-search" class="col-12 col-md-9"><form name="searchform" method="get" action="/cgi-bin/koha/opac-search.pl" id="searchform"> <div class="row align-items-center"> <div class="col-auto order-1"><label for="masthead_search">Search</label></div><div class="col-auto order-2"> <select name="idx" id="masthead_search" class="form-select"> <option value="">Library catalog</option> <option value="ti">Title</option> <option value="au">Author</option> <option value="su">Subject</option> <option value="nb">ISBN</option> <option value="ns">ISSN</option> <option value="se">Series</option> <option value="callnum">Call number</option> </select></div><div class="col order-3"><input type="text" title="Type search term" class="form-control" id="translControl1" name="q" placeholder="What are you looking for?"/><span id="translControl"></span></div><div class="order-4 col-auto">
+<button type="submit" id="searchsubmit" class="btn btn-primary" aria-label="Search the catalog">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="search-icon">
+        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.5"></circle>
+        <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></line>
+    </svg>
+</button>
+    </div>
+</div>
+</form>
+</div>');
 
 
 if ( this_query ) {
