@@ -32,7 +32,7 @@ jobs:
         GITHUB_REPO="${parts[1]}"
         echo "GITHUB_REPO=$GITHUB_REPO" >> $GITHUB_ENV
         echo "KOHA_BRANCH=${{ steps.koha-version.outputs.current-branch-name }}" >> $GITHUB_ENV
-        echo "PLUGINS_DIR=$(pwd)/.." >> $GITHUB_ENV
+        echo "PLUGINS_DIR=$(pwd)" >> $GITHUB_ENV
         echo "SYNC_REPO=$(pwd)/../kohaclone" >> $GITHUB_ENV
 
     - name: Check out Koha
@@ -60,12 +60,23 @@ jobs:
           export KOHA_IMAGE=${{ steps.koha-version.outputs.version-major-minor }}
         fi
         ktd --name opacthemechildrens --plugins up -d
+        
+    - name: Debug KTD startup
+      run: |
+        cd ../koha-testing-docker
+        export KTD_HOME=$(pwd)
+        echo "=== Docker PS ==="
+        docker ps -a
+        echo "=== KTD list ==="
+        ktd --name opacthemechildrens --list || true
+        echo "=== Logs (initial) ==="
+        docker logs opacthemechildrens-koha-1 --tail 100 || true
 
     - name: Wait for KTD to be ready
       run: |
         cd ../koha-testing-docker
         export KTD_HOME=$(pwd)
-        ktd --name opacthemechildrens --wait-ready 120
+        ktd --name opacthemechildrens --wait-ready 240
 
     - name: Run plugin tests
       run: |
